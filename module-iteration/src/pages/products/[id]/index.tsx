@@ -40,7 +40,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const data = await getProductsById(params?.id);
+    const data = await getProductsById(params?.id as string);
     const product: Product = data;
 
     return {
