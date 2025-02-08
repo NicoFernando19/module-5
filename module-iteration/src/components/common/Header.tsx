@@ -1,19 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-// import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface HeaderProps {
     headerTitle: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ headerTitle }) => {
-    // const { isAuthenticated, removeAuth } = useAuth();
-    const isAuthenticated = true
+    const { isAuthenticated, removeAuth } = useAuth();
     const router = useRouter();
 
     const handleLogOut = () => {
-        // removeAuth()
+        removeAuth()
     }
 
 

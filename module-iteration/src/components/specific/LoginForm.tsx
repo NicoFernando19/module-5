@@ -1,4 +1,3 @@
-
 interface LoginFormProps {
     handleSubmit: () => void
 }
