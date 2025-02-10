@@ -1,6 +1,6 @@
 import { ProfileForm } from '@/types';
 
-const api = 'https://api.escuelajs.co/api/v1'
+const api = process.env.NEXT_PUBLIC_API_URL
 
 export const login = async (email: string, password: string) => {
     try {
@@ -21,9 +21,8 @@ export const login = async (email: string, password: string) => {
     }
 }
 
-export const getProfile = async() => {
+export const getProfile = async(access_token: string) => {
     try {
-        const access_token = localStorage.getItem('accessToken');
         const response = await fetch(`${api}/auth/profile`, {
             method: "GET",
             headers: {
@@ -38,9 +37,8 @@ export const getProfile = async() => {
     }
 }
 
-export const updateProfile = async (userId?: number, data?: ProfileForm) =>{
+export const updateProfile = async (access_token:string, userId?: number, data?: ProfileForm) =>{
     try {
-        const access_token = localStorage.getItem('accessToken');
         const response = await fetch(`${api}/users/${userId}`, {
             method: "PUT",
             body: JSON.stringify(data),

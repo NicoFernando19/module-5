@@ -13,6 +13,7 @@ const Header: React.FC<HeaderProps> = ({ headerTitle }) => {
 
     const handleLogOut = () => {
         removeAuth()
+        router.push('/')
     }
 
 

@@ -12,7 +12,7 @@ interface ProductsProps {
 }
 
 const Products = ({ products }: ProductsProps) => {
-    const defaultImage = "https://picsum.photos/200";
+    // const defaultImage = "https://picsum.photos/200";
     return (
         <section>
             <div className='container mx-auto my-4'>
@@ -23,28 +23,28 @@ const Products = ({ products }: ProductsProps) => {
                 </div>
                 <div className='flex flex-wrap justify-center'>
                     {products.length > 0 && products.map((product, idx) => (
-                        <Link key={idx} href={`/products/${product.id}`}>
-                            <Card className='m-6 bg-slate-400 w-1/5'>
+                        <Link className='w-1/5' key={idx} href={`/products/${product.id}`}>
+                            <Card className='m-6 bg-slate-400'>
                                 <Card.Header>
                                     <CustomCarousel>
                                         {product.images.length > 0 && product.images.map((img, index) => {
-                                            let newImg;
-                                            if (typeof img === 'string') {
-                                                try {
-                                                    const parsedArray = JSON.parse(img);
-                                                    newImg = Array.isArray(parsedArray) && parsedArray.length > 0 ? parsedArray[0] : null;
-                                                } catch (error) {
-                                                    console.error(error)
-                                                    newImg = null;
-                                                }
-                                            } else if (Array.isArray(img)) {
-                                                newImg = img[0];
-                                            } else {
-                                                newImg = null;
-                                            }
+                                            // let newImg;
+                                            // if (typeof img === 'string') {
+                                            //     try {
+                                            //         const parsedArray = JSON.parse(img);
+                                            //         newImg = Array.isArray(parsedArray) && parsedArray.length > 0 ? parsedArray[0] : null;
+                                            //     } catch (error) {
+                                            //         console.error(error)
+                                            //         newImg = null;
+                                            //     }
+                                            // } else if (Array.isArray(img)) {
+                                            //     newImg = img[0];
+                                            // } else {
+                                            //     newImg = null;
+                                            // }
                                             return (
                                                 <CarouselItem key={index} className='pl-0 w-1/4'>
-                                                    <Image src={newImg || defaultImage} alt='image' key={index} width={300} height={300} />
+                                                    <img src={img || defaultImage} alt='image' key={index} width={300} height={300} />
                                                 </CarouselItem>
                                             )
                                         })}

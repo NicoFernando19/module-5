@@ -1,5 +1,5 @@
 
-const api = 'https://api.escuelajs.co/api/v1'
+const api = process.env.NEXT_PUBLIC_API_URL
 
 export const getProducts = async (title?: string) => {
     try {

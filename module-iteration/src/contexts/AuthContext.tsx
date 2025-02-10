@@ -1,3 +1,4 @@
+import { deleteCookie, getCookie } from 'cookies-next';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface AuthContextType {
@@ -17,7 +18,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     useEffect(() => {
         const validateAuth = () => {
-            const token = localStorage.getItem('accessToken');
+            const token = getCookie('accessToken');
             if(token) 
             {
                 setIsAuthenticated(true)
@@ -34,8 +35,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const setAuth = () => setIsAuthenticated(true);
     const removeAuth = () => {
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
+        deleteCookie('accessToken');
+        deleteCookie('refreshToken');
         setIsAuthenticated(false);
     }
 

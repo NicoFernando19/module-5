@@ -27,3 +27,8 @@ export interface ProfileForm {
     email: string | undefined
     role: string | undefined
 }
+
+export interface Login {
+    email: string,
+    password: string
+}
