@@ -4,7 +4,6 @@ import { CarouselItem } from '@/components/ui/carousel';
 import { getProducts } from '@/services/Products';
 import { Product } from '@/types';
 import { GetServerSideProps } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 
 interface ProductsProps {
@@ -44,7 +43,7 @@ const Products = ({ products }: ProductsProps) => {
                                             // }
                                             return (
                                                 <CarouselItem key={index} className='pl-0 w-1/4'>
-                                                    <img src={img || defaultImage} alt='image' key={index} width={300} height={300} />
+                                                    <img src={img} alt='image' key={index} width={300} height={300} />
                                                 </CarouselItem>
                                             )
                                         })}
